@@ -130,9 +130,18 @@ export default function JournalPage() {
                         )}
                       </div>
                     </div>
-                    <span className="journal-entry__time">
-                      {new Date(entry.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
-                    </span>
+                    <div className="journal-entry__actions" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span className="journal-entry__time">
+                        {new Date(entry.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+                      </span>
+                      <button
+                        className="journal-entry__delete"
+                        onClick={() => handleDeleteEntry(entry.id)}
+                        title="Delete entry"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
                   </div>
 
                   <p className="journal-entry__content">{entry.content}</p>
@@ -149,14 +158,6 @@ export default function JournalPage() {
 
                   {/* Decorative line on left */}
                   <div className="journal-entry__accent" />
-
-                  <button
-                    className="journal-entry__delete"
-                    onClick={() => handleDeleteEntry(entry.id)}
-                    title="Delete entry"
-                  >
-                    <Trash2 size={14} />
-                  </button>
                 </div>
               ))}
             </div>
