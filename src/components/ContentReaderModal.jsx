@@ -32,11 +32,38 @@ export default function ContentReaderModal() {
       }
 
       try {
+        // Check cache first
+        const cacheKey = `article_${topic.replace(/\s+/g, '_')}`;
+        const cached = localStorage.getItem(cacheKey);
+        if (cached) {
+          setContent(cached);
+          setLoading(false);
+          return;
+        }
+
         const articleMd = await generateArticleContent(topic, description || '', context);
         setContent(articleMd);
+        localStorage.setItem(cacheKey, articleMd); // Cache for future clicks
       } catch (err) {
         console.error(err);
-        setError(err.message || 'Failed to generate the content. Please try again later.');
+        
+        // Graceful fallback content if AI fails
+        const fallbackMd = `
+# 🌟 AI is currently resting
+
+*Google AI Rate Limit Exceeded.* While the AI takes a quick 60-second break, here is a curated tip for your career journey:
+
+## The Power of Systems over Goals
+
+Goals are about the results you want to achieve. **Systems are about the processes that lead to those results.**
+
+- **Goals:** "I want to get a job at a FAANG company."
+- **Systems:** "I will solve 2 DSA problems every morning and read 1 system design chapter before bed."
+
+If you completely ignored your goals and focused only on your system, would you still succeed? Often, the answer is yes. Use this time to refine your daily systems in the **Goals** tab!
+        `;
+        
+        setContent(fallbackMd.trim());
       } finally {
         setLoading(false);
       }
