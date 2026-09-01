@@ -1,6 +1,6 @@
 // Backend API based auth & data persistence service
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 const STORAGE_KEYS = {
   TOKEN: 'career_os_token',
   CURRENT_USER: 'career_os_current_user',
