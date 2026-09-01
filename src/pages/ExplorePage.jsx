@@ -47,7 +47,7 @@ export default function ExplorePage() {
     pink: 'var(--gradient-pink-peach)',
   };
 
-  const fetchContent = async () => {
+  const fetchContent = async (forceRefresh = false) => {
     setLoading(true);
     setError(null);
     const apiKey = getAIApiKey();
@@ -56,13 +56,27 @@ export default function ExplorePage() {
       // Use fallbacks
       setFeatured(fallbackFeatured);
       setTopics(fallbackTopics);
-      setDailyFact("Octopuses have three hearts, nine brains, and blue blood. Two hearts pump blood to the gills, while the third pumps it to the rest of the body.");
       setError("Add your Gemini API key in Profile to get personalized AI content.");
       setLoading(false);
       return;
     }
 
     try {
+      // Check cache first
+      const cacheKey = `explore_cache_${currentUser?.careerGoal || 'default'}`;
+      const cached = localStorage.getItem(cacheKey);
+      if (!forceRefresh && cached) {
+        const { data, timestamp } = JSON.parse(cached);
+        // Cache valid for 24 hours
+        if (Date.now() - timestamp < 24 * 60 * 60 * 1000) {
+          setFeatured(data.exploreData?.featured || fallbackFeatured);
+          setTopics(data.exploreData?.topics || fallbackTopics);
+          if (data.fact) setDailyFact(data.fact);
+          setLoading(false);
+          return;
+        }
+      }
+
       const careerGoal = currentUser?.careerGoal || 'Career Growth';
       const interests = goals.map(g => g.title).join(', ');
       
@@ -78,6 +92,12 @@ export default function ExplorePage() {
       if (fact) {
         setDailyFact(fact);
       }
+
+      // Save to cache
+      localStorage.setItem(cacheKey, JSON.stringify({
+        data: { exploreData, fact },
+        timestamp: Date.now()
+      }));
     } catch (err) {
       console.error(err);
       setError("Failed to generate personalized content. Showing default topics.");
