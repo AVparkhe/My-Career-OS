@@ -137,6 +137,8 @@
   opacity: 0.5;
   transition: all var(--transition-fast);
   flex-shrink: 0;
+  border: none;
+  cursor: pointer;
 }
 
 .journal-entry:hover .journal-entry__delete {

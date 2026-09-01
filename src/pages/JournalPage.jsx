@@ -31,9 +31,7 @@ export default function JournalPage() {
   };
 
   const handleDeleteEntry = (entryId) => {
-    if (window.confirm('Delete this journal entry?')) {
-      deleteJournalEntry(entryId);
-    }
+    deleteJournalEntry(entryId);
   };
 
   const handleVoiceInput = () => {
