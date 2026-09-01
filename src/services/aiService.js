@@ -13,8 +13,6 @@ function extractAndParseJSON(response) {
     if (match) {
       jsonStr = match[0];
     }
-    // Handle potential missing quotes around keys occasionally emitted by LLM
-    jsonStr = jsonStr.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2":');
     return JSON.parse(jsonStr);
   } catch (e) {
     console.error("Failed to parse JSON:", response);
