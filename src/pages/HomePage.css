@@ -1,7 +1,7 @@
 /* === Home Page === */
 .home-page {
   padding: var(--space-xl) var(--space-2xl);
-  max-width: 900px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
@@ -14,6 +14,8 @@
   border-radius: var(--radius-2xl);
   background: var(--gradient-home-bg);
   overflow: hidden;
+  border: 2px solid var(--color-violet-light);
+  box-shadow: 0 10px 30px -10px var(--color-violet-muted);
 }
 
 .home-hero__bg {
@@ -59,22 +61,26 @@
 
 .home-hero__greeting {
   font-size: var(--font-size-sm);
-  color: var(--color-violet);
-  font-weight: var(--font-weight-semibold);
-  letter-spacing: 0.5px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-violet-dark);
   text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .home-hero__title {
-  font-size: var(--font-size-3xl);
+  font-size: 42px;
+  line-height: 1.1;
   font-weight: var(--font-weight-extrabold);
-  line-height: 1.2;
-  margin: var(--space-sm) 0;
   color: var(--text-primary);
+  margin-bottom: var(--space-sm);
 }
 
 .home-hero__highlight {
-  background: var(--gradient-violet-pink);
+  background: linear-gradient(135deg, var(--color-violet-dark), var(--color-pink-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -83,14 +89,16 @@
 .home-hero__sub {
   font-size: var(--font-size-base);
   color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  max-width: 400px;
   line-height: 1.6;
 }
 
 /* Progress Ring */
 .home-hero__progress-ring {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   flex-shrink: 0;
 }
 
@@ -102,14 +110,14 @@
 
 .home-hero__ring-bg {
   fill: none;
-  stroke: var(--bg-lavender);
+  stroke: var(--color-violet-muted);
   stroke-width: 8;
 }
 
 .home-hero__ring-fill {
   fill: none;
   stroke: url(#ring-gradient);
-  stroke-width: 8;
+  stroke-width: 10;
   stroke-linecap: round;
   transition: stroke-dashoffset 1s ease-out;
 }
@@ -126,12 +134,13 @@
 .home-hero__ring-pct {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-violet);
+  color: var(--color-violet-dark);
 }
 
 .home-hero__ring-label {
-  font-size: var(--font-size-xs);
-  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-secondary);
 }
 
 /* Stats */
@@ -148,24 +157,25 @@
   padding: var(--space-md) var(--space-lg);
   background: var(--bg-surface);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 15px -5px rgba(0,0,0,0.05);
   transition: all var(--transition-normal);
-  border: 1px solid rgba(139, 111, 247, 0.06);
+  border: 2px solid var(--stat-border, var(--color-violet-light));
 }
 
 .home-stat:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
 }
 
 .home-stat__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  font-size: 20px;
 }
 
 .home-stat--streak .home-stat__icon { background: var(--color-coral-muted); color: var(--color-coral); }
