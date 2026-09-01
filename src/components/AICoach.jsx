@@ -56,7 +56,15 @@ export default function AICoach() {
         return; // Early return for mock
       }
     } catch (err) {
-      setMessages(prev => [...prev, { id: Date.now(), type: 'ai', text: "Sorry, I had trouble connecting to the network.", time: 'Just now' }]);
+      console.error(err);
+      let errorText = err.message || "Sorry, I had trouble connecting to the network.";
+      
+      // Add a friendly prefix if it's the rate limit error
+      if (errorText.includes("Rate Limit Exceeded")) {
+        errorText = "I'm taking a quick 60-second break to recharge! (Google AI Rate Limit Exceeded). I'll be right back with you.";
+      }
+      
+      setMessages(prev => [...prev, { id: Date.now(), type: 'ai', text: errorText, time: 'Just now', isError: true }]);
     } finally {
       setIsTyping(false);
     }
