@@ -418,7 +418,7 @@
     grid-column: span 1;
   }
 }
-\n
+
 @media (max-width: 768px) {
   .dreams-page {
     padding: var(--space-md);

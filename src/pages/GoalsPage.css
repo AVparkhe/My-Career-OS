@@ -504,7 +504,7 @@
     justify-content: center;
   }
 }
-\n
+
 @media (max-width: 768px) {
   .goals-page {
     padding: var(--space-md);

@@ -348,7 +348,7 @@
     grid-column: span 1;
   }
 }
-\n
+
 @media (max-width: 768px) {
   .analytics-page {
     padding: var(--space-md);

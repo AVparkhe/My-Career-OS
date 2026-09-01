@@ -264,7 +264,7 @@
   font-weight: var(--font-weight-semibold);
   z-index: var(--z-modal);
 }
-\n
+
 @media (max-width: 768px) {
   .profile-page {
     padding: var(--space-md);

@@ -300,7 +300,7 @@
     font-size: var(--font-size-2xl);
   }
 }
-\n
+
 @media (max-width: 768px) {
   .explore-page {
     padding: var(--space-md);

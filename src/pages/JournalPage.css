@@ -461,7 +461,7 @@
     grid-template-columns: 1fr;
   }
 }
-\n
+
 @media (max-width: 768px) {
   .journal-page {
     padding: var(--space-md);

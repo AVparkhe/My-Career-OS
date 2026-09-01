@@ -207,7 +207,7 @@
     justify-content: center;
   }
 }
-\n
+
 @media (max-width: 768px) {
   .auth-container {
     padding: var(--space-lg);
