@@ -36,7 +36,7 @@ export default function ContentReaderModal() {
         setContent(articleMd);
       } catch (err) {
         console.error(err);
-        setError('Failed to generate the content. Please try again later.');
+        setError(err.message || 'Failed to generate the content. Please try again later.');
       } finally {
         setLoading(false);
       }

@@ -301,6 +301,6 @@ CRITICAL INSTRUCTIONS:
     return mdStr;
   } catch (error) {
     console.error('Article generation error:', error);
-    throw new Error('Failed to generate article content.');
+    throw new Error(error.message || 'Failed to generate article content.');
   }
 }
