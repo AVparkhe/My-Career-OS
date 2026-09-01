@@ -1,0 +1,412 @@
+/* ===================================================
+   MY CAREER OS — Design System
+   A colorful, dreamy, premium design system
+   =================================================== */
+
+/* --- Design Tokens / CSS Variables --- */
+:root {
+  /* Primary Colors */
+  --color-violet: #8B6FF7;
+  --color-violet-dark: #7259D4;
+  --color-violet-light: #A78BFF;
+  --color-violet-muted: rgba(139, 111, 247, 0.15);
+  --color-violet-glow: rgba(139, 111, 247, 0.3);
+
+  /* Secondary */
+  --color-teal: #35C9C3;
+  --color-teal-dark: #2BA8A3;
+  --color-teal-light: #5DDDD8;
+  --color-teal-muted: rgba(53, 201, 195, 0.15);
+
+  /* Accents */
+  --color-coral: #FF7F8A;
+  --color-coral-dark: #E66B75;
+  --color-coral-light: #FF9DA5;
+  --color-coral-muted: rgba(255, 127, 138, 0.15);
+
+  --color-yellow: #FFD76A;
+  --color-yellow-dark: #E6BF4F;
+  --color-yellow-light: #FFE49A;
+  --color-yellow-muted: rgba(255, 215, 106, 0.15);
+
+  --color-pink: #F5A7D7;
+  --color-pink-dark: #DD8FC0;
+  --color-pink-light: #FFBFE7;
+  --color-pink-muted: rgba(245, 167, 215, 0.15);
+
+  --color-mint: #9DE8C8;
+  --color-mint-dark: #7DD4B0;
+  --color-mint-light: #B8F0D8;
+  --color-mint-muted: rgba(157, 232, 200, 0.15);
+
+  /* Backgrounds & Surfaces */
+  --bg-primary: #FBF8FF;
+  --bg-surface: #FFFFFF;
+  --bg-secondary: #F3EEFF;
+  --bg-lavender: #EDE5FF;
+  --bg-warm: #FFF5F7;
+
+  /* Text */
+  --text-primary: #2D2145;
+  --text-secondary: #6B5F80;
+  --text-muted: #9B91AB;
+  --text-inverse: #FFFFFF;
+
+  /* Semantic Colors */
+  --color-success: #9DE8C8;
+  --color-error: #E85D6F;
+  --color-warning: #FFD76A;
+  --color-info: #35C9C3;
+
+  /* Gradients */
+  --gradient-violet-pink: linear-gradient(135deg, #8B6FF7 0%, #F5A7D7 100%);
+  --gradient-teal-aqua: linear-gradient(135deg, #35C9C3 0%, #5DD8F0 100%);
+  --gradient-pink-peach: linear-gradient(135deg, #F5A7D7 0%, #FFB7A5 100%);
+  --gradient-yellow-coral: linear-gradient(135deg, #FFD76A 0%, #FF7F8A 100%);
+  --gradient-lavender-blue: linear-gradient(135deg, #C4B5FD 0%, #7BB5FF 100%);
+  --gradient-mint-teal: linear-gradient(135deg, #9DE8C8 0%, #35C9C3 100%);
+  --gradient-dreamy: linear-gradient(135deg, #8B6FF7 0%, #5DD8F0 50%, #F5A7D7 100%);
+  --gradient-home-bg: linear-gradient(160deg, #FBF8FF 0%, #F3EEFF 40%, #FFF5F7 100%);
+  --gradient-learning-bg: linear-gradient(160deg, #F0F8FF 0%, #E8FFF9 100%);
+  --gradient-dreams-bg: linear-gradient(160deg, #FFF5F7 0%, #F3EEFF 100%);
+  --gradient-explore-bg: linear-gradient(160deg, #FFFBF0 0%, #FFF0F1 50%, #E8FFF9 100%);
+  --gradient-journal-bg: linear-gradient(160deg, #FFF5EE 0%, #F3EEFF 100%);
+  --gradient-coach-bg: linear-gradient(160deg, #F3EEFF 0%, #E8FFFD 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(139, 111, 247, 0.06);
+  --shadow-md: 0 4px 16px rgba(139, 111, 247, 0.1);
+  --shadow-lg: 0 8px 32px rgba(139, 111, 247, 0.12);
+  --shadow-xl: 0 16px 48px rgba(139, 111, 247, 0.16);
+  --shadow-glow-violet: 0 0 24px rgba(139, 111, 247, 0.3);
+  --shadow-glow-teal: 0 0 24px rgba(53, 201, 195, 0.3);
+  --shadow-glow-coral: 0 0 24px rgba(255, 127, 138, 0.3);
+  --shadow-glow-mint: 0 0 24px rgba(157, 232, 200, 0.3);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-index */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-modal: 1000;
+  --z-toast: 2000;
+  --z-tooltip: 3000;
+}
+
+/* --- Global Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: var(--font-family);
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --- Accessibility --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-violet);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* --- Background Blobs --- */
+.bg-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: blobFloat 20s ease-in-out infinite;
+}
+
+.bg-blob--violet {
+  width: 400px;
+  height: 400px;
+  background: var(--color-violet-muted);
+  top: -100px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.bg-blob--pink {
+  width: 350px;
+  height: 350px;
+  background: var(--color-pink-muted);
+  bottom: -50px;
+  left: -50px;
+  animation-delay: -5s;
+}
+
+.bg-blob--teal {
+  width: 300px;
+  height: 300px;
+  background: var(--color-teal-muted);
+  top: 40%;
+  left: 30%;
+  animation-delay: -10s;
+}
+
+.bg-blob--yellow {
+  width: 250px;
+  height: 250px;
+  background: var(--color-yellow-muted);
+  top: 20%;
+  right: 20%;
+  animation-delay: -15s;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -30px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(20px, 10px) scale(1.02); }
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-violet-muted);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-violet-glow);
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 111, 247, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(139, 111, 247, 0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes waveform {
+  0%, 100% { height: 4px; }
+  50% { height: 24px; }
+}
+
+@keyframes progress-fill {
+  from { stroke-dashoffset: var(--progress-offset, 283); }
+  to { stroke-dashoffset: var(--progress-target, 100); }
+}
+
+@keyframes celebrateGlow {
+  0% { box-shadow: 0 0 0 0 rgba(157, 232, 200, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(157, 232, 200, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(157, 232, 200, 0); }
+}
+
+/* --- Utility Classes --- */
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out; }
+.animate-fade-in-scale { animation: fadeInScale 0.4s ease-out; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-breathe { animation: breathe 3s ease-in-out infinite; }
+.animate-glow { animation: glow-pulse 2s ease-in-out infinite; }
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+/* --- Glass effect --- */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(45, 33, 69, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 111, 247, 0.2);
+}

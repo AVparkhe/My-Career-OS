@@ -1,0 +1,62 @@
+/* === App Layout === */
+.app {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  transition: background 0.5s ease;
+}
+
+.app-main {
+  flex: 1;
+  margin-left: 240px;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* Dynamic backgrounds per section */
+.app-bg--home {
+  background: linear-gradient(160deg, #FBF8FF 0%, #F3EEFF 40%, #FFF5F7 100%);
+}
+
+.app-bg--goals {
+  background: linear-gradient(160deg, #FBF8FF 0%, #F0F8FF 50%, #E8FFF9 100%);
+}
+
+.app-bg--dreams {
+  background: linear-gradient(160deg, #FFF5F7 0%, #F3EEFF 50%, #FBF8FF 100%);
+}
+
+.app-bg--explore {
+  background: linear-gradient(160deg, #FFFBF0 0%, #FFF0F1 50%, #E8FFF9 100%);
+}
+
+.app-bg--journal {
+  background: linear-gradient(160deg, #FFF5EE 0%, #F3EEFF 50%, #FBF8FF 100%);
+}
+
+.app-bg--achievements {
+  background: linear-gradient(160deg, #FBF8FF 0%, #FFFBF0 50%, #F3EEFF 100%);
+}
+
+.app-bg--analytics {
+  background: linear-gradient(160deg, #F3EEFF 0%, #F0F8FF 50%, #FBF8FF 100%);
+}
+
+.app-bg--profile {
+  background: linear-gradient(160deg, #FBF8FF 0%, #FFF5F7 50%, #F3EEFF 100%);
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    margin-left: 0;
+    margin-bottom: 70px;
+  }
+}
+\n
+@media (max-width: 768px) {
+  .app-main {
+    margin-left: 0;
+    margin-bottom: 70px;
+  }
+}

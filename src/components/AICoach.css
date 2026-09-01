@@ -1,0 +1,316 @@
+/* === AI Coach Panel === */
+.coach-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 33, 69, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--space-lg);
+}
+
+.coach-panel {
+  width: 420px;
+  max-width: 100%;
+  height: calc(100vh - var(--space-xl) * 2);
+  max-height: 700px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-2xl);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  border: 1px solid rgba(139, 111, 247, 0.1);
+}
+
+.coach-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  background: var(--gradient-coach-bg);
+  border-bottom: 1px solid rgba(139, 111, 247, 0.08);
+}
+
+.coach-header__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.coach-orb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--gradient-dreamy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.coach-orb--listening {
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+.coach-orb--thinking {
+  animation: spin 2s linear infinite;
+}
+
+.coach-orb--responding {
+  animation: pulse 1s ease-in-out;
+  box-shadow: var(--shadow-glow-violet);
+}
+
+.coach-orb__ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 111, 247, 0.2);
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.coach-orb__ring--2 {
+  inset: -8px;
+  border-color: rgba(139, 111, 247, 0.1);
+  animation-delay: 0.5s;
+}
+
+.coach-orb__waveform {
+  position: absolute;
+  bottom: -16px;
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.coach-orb__wave-bar {
+  width: 3px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-violet);
+  animation: waveform 0.8s ease-in-out infinite;
+}
+
+.coach-header__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  background: var(--gradient-violet-pink);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.coach-header__status {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.coach-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.coach-close:hover {
+  background: var(--color-violet-muted);
+  color: var(--color-violet);
+}
+
+/* Messages */
+.coach-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.coach-msg {
+  display: flex;
+  gap: var(--space-sm);
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.coach-msg--user {
+  flex-direction: row-reverse;
+}
+
+.coach-msg__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient-violet-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.coach-msg__bubble {
+  max-width: 80%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.coach-msg--ai .coach-msg__bubble {
+  background: var(--bg-secondary);
+  border-bottom-left-radius: var(--radius-sm);
+}
+
+.coach-msg--user .coach-msg__bubble {
+  background: var(--gradient-violet-pink);
+  color: white;
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+.coach-msg__time {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.coach-msg--user .coach-msg__time {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.coach-msg__typing {
+  padding: var(--space-md);
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.typing-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-violet);
+  opacity: 0.3;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Input */
+.coach-input {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid rgba(139, 111, 247, 0.08);
+}
+
+.coach-input input {
+  flex: 1;
+  padding: 10px 16px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.coach-input input::placeholder {
+  color: var(--text-muted);
+}
+
+.coach-mic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-violet);
+  background: var(--color-violet-muted);
+  transition: all var(--transition-normal);
+}
+
+.coach-mic:hover {
+  background: var(--color-violet);
+  color: white;
+}
+
+.coach-mic--active {
+  background: var(--color-coral);
+  color: white;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.coach-send {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: var(--gradient-violet-pink);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.coach-send:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow-violet);
+}
+
+.coach-send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Quick Actions */
+.coach-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg) var(--space-lg);
+}
+
+.coach-quick__btn {
+  padding: 6px 14px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--color-violet);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.coach-quick__btn:hover {
+  background: var(--color-violet-muted);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .coach-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .coach-panel {
+    width: 100%;
+    height: 85vh;
+    max-height: none;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+  }
+}
