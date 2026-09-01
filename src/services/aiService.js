@@ -176,6 +176,8 @@ Generate exactly 5 trending topic categories related to their goals. For each ca
 
 Also, generate a "Featured Article" with a catchy title, a short 2-sentence summary, a read time (e.g., "5 min read"), and a category.
 
+Finally, generate a single "dailyFact". It should be surprising, inspiring, or insightful related to their goals.
+
 Respond ONLY with a valid JSON object matching this structure (no markdown, no code fences):
 {
   "featured": {
@@ -184,6 +186,7 @@ Respond ONLY with a valid JSON object matching this structure (no markdown, no c
     "readTime": "<read time>",
     "category": "<category tag>"
   },
+  "dailyFact": "<the fascinating fact>",
   "topics": [
     {
       "id": "1",

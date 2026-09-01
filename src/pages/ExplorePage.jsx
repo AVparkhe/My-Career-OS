@@ -80,22 +80,19 @@ export default function ExplorePage() {
       const careerGoal = currentUser?.careerGoal || 'Career Growth';
       const interests = goals.map(g => g.title).join(', ');
       
-      const [exploreData, fact] = await Promise.all([
-        generateExploreContent(careerGoal, interests),
-        generateDailyFact(careerGoal)
-      ]);
+      const exploreData = await generateExploreContent(careerGoal, interests);
 
       if (exploreData) {
         setFeatured(exploreData.featured || fallbackFeatured);
         setTopics(exploreData.topics || fallbackTopics);
-      }
-      if (fact) {
-        setDailyFact(fact);
+        if (exploreData.dailyFact) {
+          setDailyFact(exploreData.dailyFact);
+        }
       }
 
       // Save to cache
       localStorage.setItem(cacheKey, JSON.stringify({
-        data: { exploreData, fact },
+        data: { exploreData, fact: exploreData?.dailyFact },
         timestamp: Date.now()
       }));
     } catch (err) {
