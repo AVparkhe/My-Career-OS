@@ -12,7 +12,7 @@ export default function AnalyticsPage() {
   const [analysis, setAnalysis] = useState(null);
   const [error, setError] = useState(null);
 
-  const fetchAnalysis = async () => {
+  const fetchAnalysis = async (forceRefresh = false) => {
     setLoading(true);
     setError(null);
     
@@ -29,8 +29,28 @@ export default function AnalyticsPage() {
     
     try {
       if (apiKey) {
+        // Check cache first
+        const cacheKey = `analytics_cache_${currentUser?.id || 'default'}`;
+        const cached = localStorage.getItem(cacheKey);
+        
+        if (!forceRefresh && cached) {
+          const { data, timestamp } = JSON.parse(cached);
+          // Cache valid for 12 hours
+          if (Date.now() - timestamp < 12 * 60 * 60 * 1000) {
+            setAnalysis(data);
+            setLoading(false);
+            return;
+          }
+        }
+
         const result = await analyzeProgress(userData);
         setAnalysis(result);
+        
+        // Save to cache
+        localStorage.setItem(cacheKey, JSON.stringify({
+          data: result,
+          timestamp: Date.now()
+        }));
       } else {
         const score = calculateLocalScore(userData);
         const mentor = getLocalMentorMessage(score, currentUser?.name || 'User');
@@ -56,7 +76,7 @@ export default function AnalyticsPage() {
       }
     } catch (err) {
       console.error(err);
-      setError("Could not generate AI analysis. " + err.message);
+      setError(err.message);
     } finally {
       setLoading(false);
     }

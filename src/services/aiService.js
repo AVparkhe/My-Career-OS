@@ -39,8 +39,18 @@ async function callGemini(prompt) {
   });
 
   if (!response.ok) {
-    const err = await response.text();
-    throw new Error(`AI request failed: ${err}`);
+    let errMessage = 'Unknown error occurred.';
+    try {
+      const errData = await response.json();
+      if (errData?.error?.code === 429) {
+        errMessage = 'Google AI Rate Limit Exceeded. Please wait 1 minute and try again.';
+      } else {
+        errMessage = errData?.error?.message || response.statusText;
+      }
+    } catch (e) {
+      errMessage = await response.text();
+    }
+    throw new Error(errMessage);
   }
 
   const data = await response.json();
